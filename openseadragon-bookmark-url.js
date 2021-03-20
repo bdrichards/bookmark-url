@@ -21,7 +21,7 @@
         var parseHash = function() {
             var params = {};
             var hash = window.location.hash.replace(/^#/, '');
-              searchStr = window.location.search; // added by BDR July 2018
+              searchStr = window.location.search; // capture the "search string" portion; added by BDR July 2018
             if (hash) {
                 var parts = hash.split('&');
                 parts.forEach(function(part) {

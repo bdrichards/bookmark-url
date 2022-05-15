@@ -16,10 +16,12 @@
         var self = this;
 
         var updateTimeout;
+        var searchStr; // added by BDR July 2018
 
         var parseHash = function() {
             var params = {};
             var hash = window.location.hash.replace(/^#/, '');
+              searchStr = window.location.search; // capture the "search string" portion; added by BDR July 2018
             if (hash) {
                 var parts = hash.split('&');
                 parts.forEach(function(part) {
@@ -44,7 +46,7 @@
                 var zoom = self.viewport.getZoom();
                 var pan = self.viewport.getCenter();
                 var oldUrl = location.pathname + location.hash;
-                var url = location.pathname + '#zoom=' + zoom + '&x=' + pan.x + '&y=' + pan.y;
+                var url = location.pathname + searchStr + '#zoom=' + zoom + '&x=' + pan.x + '&y=' + pan.y; // edited by BDR July 2018 - added '+ searchStr'
                 history.replaceState({}, '', url);
 
                 if (url !== oldUrl) {
